@@ -99,6 +99,10 @@ func getMangaPicLink(url string) []string {
 
 func downloadFromPage(ur []string) error {
 	client := &http.Client{}
+	e := os.Remove("./tmp")
+	if e != nil {
+		return e
+	}
 
 	for i := range ur {
 		req, err := http.NewRequest(http.MethodGet, ur[i], nil)
@@ -138,5 +142,5 @@ func downloadFromPage(ur []string) error {
 }
 
 func main() {
-
+	fmt.Println("hi")
 }
