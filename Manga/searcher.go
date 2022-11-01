@@ -153,6 +153,13 @@ func DownloadFromPage(ur []string, chap int, name string) error {
 	return errors.New("too much retries")
 }
 
+func (m Manga) DownloadOneFromPage(chap int) {
+	length := len(m.Chapter)
+	i := length - chap
+	s := GetMangaPicLink(m.Chapter[i].Url)
+	DownloadFromPage(s, chap, m.Title)
+}
+
 func (m Manga) DownloadMultiFromPage(start, end int) {
 	length := len(m.Chapter)
 	x := start

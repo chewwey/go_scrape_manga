@@ -29,8 +29,22 @@ var searchCmd = &cobra.Command{
 		var intp int
 		fmt.Scanln(&intp)
 		man := Manga.MangaPage(page[intp-1].Url)
-		man.DownloadMultiFromPage(1, 3)
-
+		fmt.Println("1: One chapter \n 2: Multiple chapter")
+		var choice int
+		fmt.Scanln(&choice)
+		if choice == 1 {
+			var down int
+			fmt.Println("Which chapter: ")
+			fmt.Scanln(&down)
+			man.DownloadOneFromPage(down)
+		}
+		if choice == 2 {
+			var down1 int
+			var down2 int
+			fmt.Println("Which chapter to chapter: ")
+			fmt.Scanln(&down1, &down2)
+			man.DownloadMultiFromPage(down1, down2)
+		}
 	},
 }
 
